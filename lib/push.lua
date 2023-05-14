@@ -12,7 +12,8 @@ local push = {
     resizable = false,
     pixelperfect = false,
     highdpi = true,
-    canvas = true
+    canvas = true,
+    stencil = true
   }
   
 }
@@ -71,7 +72,8 @@ function push:setupCanvas(canvases)
     self.canvases[i] = {
       name = canvases[i].name,
       shader = canvases[i].shader,
-      canvas = love.graphics.newCanvas(self._WWIDTH, self._WHEIGHT)
+      canvas = love.graphics.newCanvas(self._WWIDTH, self._WHEIGHT),
+      stencil = self._stencil
     }
   end
 
@@ -80,7 +82,7 @@ end
 
 function push:setCanvas(name)
   if not self._canvas then return true end
-  return love.graphics.setCanvas( self:getCanvasTable(name).canvas )
+  return love.graphics.setCanvas( {self:getCanvasTable(name).canvas, stencil=self:getCanvasTable(name).stencil })
 end
 function push:getCanvasTable(name)
   for i = 1, #self.canvases do
@@ -98,7 +100,8 @@ function push:setShader(name, shader)
 end
 
 function push:initValues()
-  self._PSCALE = self._highdpi and love.window.getPixelScale() or 1
+  self._PSCALE = self._highdpi and love.window.getPixelScale or 1
+  -- self._PSCALE = self._highdpi and love.window.getPixelScale() or 1
   
   self._SCALE = {
     x = self._RWIDTH/self._WWIDTH * self._PSCALE,
@@ -131,7 +134,7 @@ end
 function push:start()
   if self._canvas then
     love.graphics.push()
-    love.graphics.setCanvas(self.canvases[1].canvas)
+    love.graphics.setCanvas({self.canvases[1].canvas, stencil=self.canvases[1].stencil})
   else
     love.graphics.translate(self._OFFSET.x, self._OFFSET.y)
     love.graphics.setScissor(self._OFFSET.x, self._OFFSET.y, self._WWIDTH*self._SCALE.x, self._WHEIGHT*self._SCALE.y)
@@ -150,7 +153,7 @@ function push:finish(shader)
     love.graphics.setColor(255, 255, 255)
 
     --draw canvas
-    love.graphics.setCanvas(_render.canvas)
+    love.graphics.setCanvas({_render.canvas, stencil=_render.stencil})
     for i = 1, #self.canvases - 1 do --do not draw _render yet
       local _table = self.canvases[i]
       love.graphics.setShader(_table.shader)
@@ -165,7 +168,7 @@ function push:finish(shader)
 
     --clear canvas
     for i = 1, #self.canvases do
-      love.graphics.setCanvas( self.canvases[i].canvas )
+      love.graphics.setCanvas( {self.canvases[i].canvas, stencil=self.canvases[i].stencil} )
       love.graphics.clear()
     end
 
@@ -218,7 +221,9 @@ function push:switchFullscreen(winw, winh)
 end
 
 function push:resize(w, h)
-  local pixelScale = love.window.getPixelScale()
+  local love11 = love.getVersion() == 11
+  local pixelScale = love.window.getPixelScale or 1
+  -- local pixelScale = love.window.getPixelScale()
   if self._highdpi then w, h = w / pixelScale, h / pixelScale end
   self._RWIDTH = w
   self._RHEIGHT = h
