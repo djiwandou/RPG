@@ -32,7 +32,7 @@ function StartState:init()
     gMusic['intro']:play()
 
     -- draw the title to canvas which renders it as a texture for stenciling
-    love.graphics.setCanvas(gCanvas)
+    love.graphics.setCanvas({gCanvas, stencil=true})
     love.graphics.setColor(255, 255, 255, 255)
     love.graphics.setFont(gFonts['large'])
     love.graphics.printf('ZAPPA QUEST 2', 0, VIRTUAL_HEIGHT / 2 - 64, VIRTUAL_WIDTH, 'center')
