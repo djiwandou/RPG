@@ -37,16 +37,20 @@ function PlayState:enter()
         function(continue)
             Chain(
                 function(go)
-                    gStateStack:push(DialogueState("Zappa: How did we end up here?", go))
+                    -- gStateStack:push(DialogueState("Zappa: How did we end up here?", go))
+                    gStateStack:push(DialogueState("Zappa: Bagaimana kita bisa berada disini?", go))
                 end,
                 function(go)
-                    gStateStack:push(DialogueState("Zappa: We better have a look around.", go))
+                    -- gStateStack:push(DialogueState("Zappa: We better have a look around.", go))
+                    gStateStack:push(DialogueState("Zappa: Sebaiknya kita lihat di sekeliling.", go))
                 end,
                 function(go)
-                    gStateStack:push(DialogueState("Moon: Alright big brother, but let's be careful.", go))
+                    -- gStateStack:push(DialogueState("Moon: Alright big brother, but let's be careful.", go))
+                    gStateStack:push(DialogueState("Moon: Baik kak, tapi sebaiknya kita berhati-hati.", go))
                 end,
                 function(go)
-                    gStateStack:push(DialogueState("Moon: This place gives me the creeps.", go))
+                    -- gStateStack:push(DialogueState("Moon: This place gives me the creeps.", go))
+                    gStateStack:push(DialogueState("Moon: Tempat ini membuatku merinding.", go))
                 end,
                 function(go)
                     continue()
@@ -56,10 +60,12 @@ function PlayState:enter()
         function()
             Chain(
                 function(go)
-                    gStateStack:push(DialogueState("Press 'enter' to open the main menu.", go))
+                    -- gStateStack:push(DialogueState("Press 'enter' to open the main menu.", go))
+                    gStateStack:push(DialogueState("Tekan 'enter' untuk membuka menu utama.", go))
                 end,
                 function(go)
-                    gStateStack:push(DialogueState("Press 'space' to talk to the merchant.", go))
+                    -- gStateStack:push(DialogueState("Press 'space' to talk to the merchant.", go))
+                    gStateStack:push(DialogueState("Tekan 'spasi' untuk berbicara dengan pedagang.", go))
                 end
             )()  
         end
