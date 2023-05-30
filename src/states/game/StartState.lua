@@ -126,7 +126,7 @@ function StartState:render()
     -- this opacity blinks
     love.graphics.setColor(255, 255, 255, self.opacity)
     love.graphics.setFont(gFonts['small'])
-    love.graphics.printf('Press Enter', 0, VIRTUAL_HEIGHT / 2 + 64, VIRTUAL_WIDTH, 'center')
+    love.graphics.printf('Tekan Enter', 0, VIRTUAL_HEIGHT / 2 + 64, VIRTUAL_WIDTH, 'center')
 
     -- this rectangle slides down to reveal the text
     love.graphics.setColor(0, 0, 0, 255)

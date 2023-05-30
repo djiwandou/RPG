@@ -52,5 +52,5 @@ function Player:init(def)
     self.inventory:addItem('Revive', 2)
     
     -- keep track of the player's gold
-    self.gold = 2000
+    self.gold = 200
 end

@@ -45,14 +45,16 @@ function Chest:onInteract(player)
     gSfx['step']:play()
     if not self.opened then
         if self.gold then
-            gStateStack:push(DialogueState('You found '.. self.contents .. 'G!',
+            -- gStateStack:push(DialogueState('You found '.. self.contents .. 'G!',
+            gStateStack:push(DialogueState('Kamu menemukan '.. self.contents .. 'G!',
             function()
                 player.gold = player.gold + self.contents
                 self.frame = 55
                 self.opened = true
             end))
         else
-            gStateStack:push(DialogueState('You found a '.. self.contents .. '!',
+            -- gStateStack:push(DialogueState('You found a '.. self.contents .. '!',
+            gStateStack:push(DialogueState('Kamu menemukan sebuah '.. self.contents .. '!',
             function()
                 player.inventory:addItem(self.contents, 1)
                 self.frame = 55
