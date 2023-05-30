@@ -26,7 +26,8 @@ function ShopMenuState:init(player, shopInventory)
                     self.player.inventory:addItem(item, 1)
                     self.player.gold = self.player.gold - ITEM_DEFS[item].price
                 else
-                    gStateStack:push(DialogueState('You seem to be short on funds.'))
+                    -- gStateStack:push(DialogueState('You seem to be short on funds.'))
+                    gStateStack:push(DialogueState('Uangmu tidak cukup nih.'))
                 end
             end
         })
@@ -35,7 +36,8 @@ function ShopMenuState:init(player, shopInventory)
     table.insert(shopList, {
         text = 'Done',
         onSelect = function()
-            gStateStack:push(DialogueState('Thank you! Come back if you need any supplies.', 
+            -- gStateStack:push(DialogueState('Thank you! Come back if you need any supplies.',
+            gStateStack:push(DialogueState('Terima kasih! Silakan kembali jika perlu tambahan item.', 
             function()
                 gStateStack:pop()
             end))

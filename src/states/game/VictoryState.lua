@@ -38,7 +38,7 @@ function VictoryState:render()
 
     love.graphics.setColor(255, 255, 255, 255)
     love.graphics.setFont(gFonts['large'])
-    love.graphics.printf('The End', 0, VIRTUAL_HEIGHT / 2 - 64, VIRTUAL_WIDTH, 'center')
+    love.graphics.printf('Tamat', 0, VIRTUAL_HEIGHT / 2 - 64, VIRTUAL_WIDTH, 'center')
     love.graphics.setFont(gFonts['small'])
-    love.graphics.printf('Press Enter', 0, VIRTUAL_HEIGHT / 2 + 32, VIRTUAL_WIDTH, 'center')
+    love.graphics.printf('Tekan Enter', 0, VIRTUAL_HEIGHT / 2 + 32, VIRTUAL_WIDTH, 'center')
 end
