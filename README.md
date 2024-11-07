@@ -6,7 +6,12 @@ and fight monsters along the way.  The game ends if the player defeats the final
 
 Gameplay can be seen here: https://youtu.be/tKqDVJENPWk
 
-TODO
+## Run the game
+* download Love2D https://love2d.org/#download
+* In windows: Run using terminal with this command `'C:\Program Files\LOVE\love.exe' .\RPG\` (the folder)
+* In mac or linux: Run using terminal with this command `love main.lua` 
+
+## TODO
 
 - add more items
 - add equipment
