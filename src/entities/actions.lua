@@ -199,6 +199,26 @@ ACTIONS = {
             target.opacity = 255
             callback()
         end)   
+    end,
+
+['item_restoreMP'] =
+    function(item, owner, target, Number, callback)
+        local callback = callback or function() end
+
+        if target.currentHP > 0 then -- Assuming you can only restore MP if the character is alive
+            target.currentMP = math.min(target.stats:get('MP'), target.currentMP + item.restore)
+        end
+        
+        Number:setNum(item.restore, target.x + target.width / 2, 
+            target.y - gFonts['small']:getHeight())
+            
+        gSfx['heal']:play() -- Assuming a heal sound for MP restoration
+        Timer.every(0.1, function()
+            target.opacity = target.opacity == 0 and 255 or 0
+        end):limit(8):finish(function()
+            target.opacity = 255
+            callback()
+        end)   
     end
 
 }

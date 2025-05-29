@@ -42,7 +42,7 @@ function BattleState:enter()
     function ()
         gMusic['battle']:setLooping(true)
         gMusic['battle']:play()
-        gStateStack:push(BattleMessageState('A group of enemies appeared!', 
+        gStateStack:push(BattleMessageState('Sekumpulan monster muncul!', 
         function()
             gStateStack:push(TurnState(self))
         end))
