@@ -51,8 +51,17 @@ ITEM_DEFS = {
         text = 'Revives one fallen party member.',
         restore = 20,
         price = 100
+    },
+    ['MP Potion'] = {
+        name = 'MP Potion',
+        type = 'consumable',
+        action = 'item_restoreMP',
+        target = {
+            select = 'party',
+            type = 'one'
+        },
+        text = 'Heals a small amount of MP.',
+        restore = 40,
+        price = 20
     }
-
-
-
 }

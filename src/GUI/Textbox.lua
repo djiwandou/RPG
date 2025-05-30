@@ -58,7 +58,7 @@ function Textbox:render()
         love.graphics.print(self.displayingChunks[i], math.floor(self.x + LINE_WIDTH * 4) + 1, 
             math.floor(self.y + LINE_WIDTH * 4 + (i - 1) * TILE_SIZE) + 1)
 
-        love.graphics.setColor(255, 255, 255, 255)
+        love.graphics.setColor(0, 0, 255, 255)
         love.graphics.print(self.displayingChunks[i], math.floor(self.x + LINE_WIDTH * 4), 
             math.floor(self.y + LINE_WIDTH * 4 + (i - 1) * TILE_SIZE))
     end

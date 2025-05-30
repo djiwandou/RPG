@@ -46,7 +46,7 @@ function Level:init(camera)
         animations = NPC_DEFS['Merchant'].animations,
         states = {['idle'] = function() return EntityIdleState(self.merchant) end},
         onInteract = function() 
-            local inventory = {'Potion', 'Revive'}
+            local inventory = {'Potion', 'Revive', 'MP Potion'}
             -- gStateStack:push(DialogueState('Looking for something?', function()
             gStateStack:push(DialogueState('Mencari sesuatu?', function()
                 gStateStack:push(ShopMenuState(self.player, inventory))
